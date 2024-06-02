@@ -15,8 +15,8 @@ img.addEventListener('click', (e) => {
 })
 
 let menu = document.querySelector(".menu")  //targeting favourite songs btm 
-let container = document.querySelector(".container"); //whole container of html page
-let sideBar = document.querySelector('.side-bar') // favourite songs pop-ups 
+let container = document.querySelector(".left-container"); //whole container of html page
+let sideBar = document.querySelector('.right-container') // favourite songs pop-ups 
 let sidevalue = 1;
 // Making copy of all te element avilable in sidebar div
 let sideBarHTML = sideBar.outerHTML;
@@ -27,16 +27,49 @@ menu.addEventListener('click', () => {
         sideBar.remove();
         sidevalue = 0;
     } else {
-        container.style.width = '75%';
+        container.style.width = '76%';
         // Re-insert the sideBar element in the container class
         container.insertAdjacentHTML('afterend', sideBarHTML);
-        sideBar = document.querySelector('.side-bar');
+        sideBar = document.querySelector('.right-container');
         sidevalue = 1;
     }
 })
+
+// geting song from api
+
+let api = 'https://saavn.dev/api/search/songs?query';
+let songInfo;
+let playMySong;
+
+let recentsongs = document.querySelectorAll('.song');
+
+recentsongs.forEach((song) => {
+    song.addEventListener('click', (e) => {
+        let songImage = song.querySelector('.songs-img');
+        let songName = song.querySelector('.song-name');
+        let playBtn = song.querySelector('.play-song');
+
+        console.log(songName.innerHTML);
+
+        songInfo = songName.textContent
+
+        async function recentPlay() {
+            let response = await fetch(`${api}=${songInfo}`)
+            let data = await response.json();
+            console.log(data);
+            // playMySong = data.results[0].album.url;
+            // console.log(playMySong);
+        }
+
+        recentPlay();
+
+    });
+});
 // work on audio player to play and stop the song
 
-let audio = new Audio('songs/khamosiyan.mp3');
+// https://www.jiosaavn.com/album/kahani-suno-2.0/euk2uC7VnHE_
+
+let audio = new Audio("./songs/khamosiyan.mp3");
 let audioplayer = document.querySelector('.play-btn')
 let currenttime = document.querySelector(".current-time")
 let remaintime = document.querySelector(".remain-time")
