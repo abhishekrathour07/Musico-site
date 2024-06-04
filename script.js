@@ -51,14 +51,14 @@ recentsongs.forEach((song) => {
 
         console.log(songName.innerHTML);
 
-        songInfo = songName.textContent
+        songInfo = songName.textContent;
 
         async function recentPlay() {
             let response = await fetch(`${api}=${songInfo}`)
             let data = await response.json();
             console.log(data);
-            // playMySong = data.results[0].album.url;
-            // console.log(playMySong);
+            playMySong = data.data.results[0].downloadUrl[2].url;
+            console.log(playMySong);
         }
 
         recentPlay();
@@ -66,8 +66,6 @@ recentsongs.forEach((song) => {
     });
 });
 // work on audio player to play and stop the song
-
-// https://www.jiosaavn.com/album/kahani-suno-2.0/euk2uC7VnHE_
 
 let audio = new Audio("./songs/khamosiyan.mp3");
 let audioplayer = document.querySelector('.play-btn')
@@ -110,7 +108,8 @@ audio.addEventListener('timeupdate', () => {
 // By clicking progress bar match the song at particular time
 ProgressBar.addEventListener('input', () => {
     audio.currentTime = ProgressBar.value * audio.duration / 100;
-})
+});
+
 
 // when audio is completed the pause button automatically change into play btn
 audio.addEventListener('ended', () => {
@@ -123,16 +122,16 @@ let volumeImg = document.querySelector('.vol-img')
 let volumevalue;
 
 volume.addEventListener('input', () => {
-    audio.volume = volume.value / 100;
+    audio.volume = volume.value/100;
     volumevalue = volume.value;
-    // console.log(volume.value);
+    console.log(volume.value);
     if (volumevalue == 0) {
         volumeImg.src = "./images/mute.png"
     }
     else {
         volumeImg.src = "./images/volume.png"
     }
-})
+});
 
 
 

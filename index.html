@@ -14,7 +14,7 @@
         <div class="left-container w-[76%]">
             <nav>
                 <ul class="flex gap-2 h-12   items-center  mt-1">
-                    <li class="ml-3 sm:ml-7 lg:ml-12"><img src="./images/logo.png" class="w-12" alt="logo" ></li>
+                    <li class="ml-3 sm:ml-7 lg:ml-12"><img src="./images/logo.png" class="w-12" alt="logo"></li>
                     <li class="w-[75%] max-w-[75%] bg-white rounded-lg py-2 hover:border-2 border-yellow-300 ">
                         <div class="flex justify-center items-center ">
                             <input type="text" placeholder="Search among 1000+ music track"
@@ -22,7 +22,8 @@
                             <img src="./images/search (2).png" alt="search" class="h-6 cursor-pointer">
                         </div>
                     </li>
-                    <li class="mr-3 sm:mr-7 lg:mr-12"><img src="./images/menu.png" alt="menubar" class="h-9 cursor-pointer menu"></li>
+                    <li class="mr-3 sm:mr-7 lg:mr-12"><img src="./images/menu.png" alt="menubar"
+                            class="h-9 cursor-pointer menu"></li>
                 </ul>
             </nav>
 
@@ -58,7 +59,7 @@
                     <div class="box-3 width-[20%]  bg-yellow-100">
                         <p class="text-sm"><span class="font-bold text-xl">01</span>/03</p>
 
-                        <img src="./images/listening-music-2 1.png" class="h-28  mt-10" alt="image-3">
+                        <img src="./images/listening-music-2 1.png" class="h-28  mt-4" alt="image-3">
                     </div>
                 </div>
             </curousal>
@@ -66,7 +67,7 @@
             <div class="weekly-tracks mx-4 mt-2 ">
                 <h2 class="font-bold text-2xl">Weekly Top Tracks </h2>
                 <div class="songs-week flex gap-3 mt-2 overflow-auto">
-                    <div>
+                    <div class="Top-artists">
                         <div class="song1 max-w-[100%] w-[8rem] p-4 h-auto bg-white ">
                             <img src="./images/image 1.png" alt="track1" class="w-[100px] h-[100px]">
                             <img src="./images/yellow-icon.png" alt="pause"
@@ -137,37 +138,52 @@
                     <div class="songs flex mt-2 overflow-auto gap-2">
                         <div class="song">
                             <div class="song1 max-w-[100%] w-[11rem] p-3 h-auto bg-white rounded-lg">
-                                <img src="./images/khanniSuno.jpg" alt="track1" class="w-[160px] h-[110px] rounded-lg songs-img">
-                                <img src="./images/yellow-icon.png" alt="pause"
+                                <img src="./images/khanniSuno.jpg" alt="track1"
+                                    class="w-[160px] h-[110px] rounded-lg songs-img">
+                                <img src="./images/play-button.png" alt="pause"
                                     class="max-w-[100%] w-8  ml-16 -mt-10 align-top cursor-pointer play-song">
                                 <p class="text-lg mt-3 text-center font-bold song-name">Khanni suno 2.0</p>
                             </div>
                         </div>
                         <div class="song">
                             <div class="song1 max-w-[100%] w-[11rem] p-3 h-auto bg-white rounded-lg">
-                                <img src="./images/sajniRe.jpg" alt="track1" class="w-[160px] h-[110px] rounded-lg songs-img">
-                                <img src="./images/yellow-icon.png" alt="pause"
+                                <img src="./images/sajniRe.jpg" alt="track1"
+                                    class="w-[160px] h-[110px] rounded-lg songs-img">
+                                <img src="./images/play-button.png" alt="pause"
                                     class="max-w-[100%] w-8  ml-16 -mt-10 align-top cursor-pointer play-song">
                                 <p class="text-lg mt-3 text-center font-bold song-name ">Sajni Re</p>
                             </div>
                         </div>
                         <div class="song">
                             <div class="song1 max-w-[100%] w-[11rem] p-3 h-auto bg-white rounded-lg">
-                                <img src="./images/phleBhiMai.jpg" alt="track1" class="w-[160px] h-[110px] rounded-lg songs-img">
-                                <img src="./images/yellow-icon.png" alt="pause"
+                                <img src="./images/phleBhiMai.jpg" alt="track1"
+                                    class="w-[160px] h-[110px] rounded-lg songs-img">
+                                <img src="./images/play-button.png" alt="pause"
                                     class="max-w-[100%] w-8  ml-16 -mt-10 align-top cursor-pointer play-song">
                                 <p class="text-lg mt-3 text-center font-bold song-name">Phle Bhi Mai</p>
                             </div>
-                        </div >
+                        </div>
                         <div class='song'>
                             <div class="song1 max-w-[100%] w-[11rem] p-3 h-auto bg-white rounded-lg">
                                 <img src="./images/Khamoshiyan.jpg" alt="track1"
                                     class="w-[160px] h-[110px]  rounded-lg songs-img">
-                                <img src="./images/yellow-icon.png" alt="pause"
+                                <img src="./images/play-button.png" alt="pause"
                                     class="max-w-[100%] w-8  ml-16 -mt-10 align-top cursor-pointer play-song">
                                 <p class="text-lg mt-3 text-center font-bold song-name">Khamoshiyan</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="mt-1" >
+                    <h2 class="font-bold text-2xl">Top Suggestion</h2>
+                    <div class="songs flex mt-2 overflow-auto gap-2" id="top-suggestion">
+                        
+                    </div>
+                </div>
+                <div class="mt-1" >
+                    <h2 class="font-bold text-2xl">Top Artists</h2>
+                    <div class="songs flex mt-2 overflow-auto gap-2" id="artists">
+                        
                     </div>
                 </div>
             </div>
@@ -219,7 +235,7 @@
             <p class="text-yellow-700 text-sm">Khamosiyaan</p>
             <p class="text-white text-[0.6rem]">Arjit Singh</p>
         </div>
-       
+
         <div class=" items-center gap-2 w-1/2  hidden sm:flex">
             <p class="text-[0.6rem] text-yellow-600 mr-3 current-time">0:00</p>
             <input type="range" min="0" max="100" value="0" class=" h-1 w-3/4 cursor-pointer progress-bar">
@@ -229,15 +245,15 @@
             <img src="./images/play-button.png" alt="" class="play-btn">
         </div>
         <div class=" volume-container w-1/7  justify-center items-center p-2 hidden  sm:flex">
-            <input type="range" value="80" class="w-1/2 h-1 mr-4 volume cursor-pointer">
+            <input type="range" value="80"  class="w-1/2 h-1 mr-4 volume cursor-pointer">
             <img src="./images/volume.png" alt="volume" class="vol-img h-6">
         </div>
     </div>
     <br>
     <br>
-    <br>
     <script src="./script.js"></script>
-    <script src="Recent-Play-api.js"></script>
+    <script src="artists-name.js"></script>
+    <script src="top-suggestion.js"></script>
 </body>
 
 </html>
