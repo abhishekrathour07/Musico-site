@@ -1,18 +1,3 @@
-let img = document.querySelector('.like-cursoul')
-
-count = 1
-img.addEventListener('click', (e) => {
-
-    if (count == 1) {
-        img.src = "./images/heartDis.png"
-        console.log(e.target);
-        count = 0
-    }
-    else {
-        img.src = './images/like.png'
-        count = 1;
-    }
-})
 
 let menu = document.querySelector(".menu")  //targeting favourite songs btm 
 let container = document.querySelector(".left-container"); //whole container of html page
@@ -60,8 +45,9 @@ recentsongs.forEach((song) => {
             playMySong = data.data.results[0].downloadUrl[2].url;
             console.log(playMySong);
         }
-
         recentPlay();
+       
+
 
     });
 });
@@ -87,7 +73,6 @@ audioplayer.addEventListener('click', () => {
 })
 
 // formating value in form of seconds 
-
 function formatTime(seconds) {
     let minutes = Math.floor(seconds / 60);
     let secs = Math.floor(seconds % 60);

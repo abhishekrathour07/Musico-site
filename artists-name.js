@@ -1,34 +1,53 @@
-// // const API_ARTIST = `https://saavn.dev/api/search/artists?query=neha+kakkar`
+const API_ARTIST = `https://saavn.dev/api/search?query=`;
 
-// const data = ` https://saavn.dev/api/search/artists?query=Adele`
+const fetchDataFromAPI = async () => {
+    try {
+        const response = await fetch(`${API_ARTIST}${artistName}`);
+        const data = await response.json();
+        console.log(data);
+        if (data.success) {
+            const songs = data.data.songs.results;
+            let parentElement = document.getElementById("artist-song");
+            songs.forEach((song) => {
+                const imageUrl = song.image.find((image) => image.quality === '500x500').url;
+                console.log(imageUrl);
+                const songName = song.title;
+                console.log(songName);
+                const songId = song.id;
+                // Append the song data to the DOM
+                parentElement.innerHTML += ` 
+                    <div  
+                    class="fav1 h-14 w-auto bg-yellow-200 rounded-lg mx-2 flex justify-between items-center mt-2 sm:px-5 px-2">
+                        <img src="${imageUrl}" alt="" class="h-10 rounded-[50%] w-12 ">
+                        <p class="text-sm font-bold sm:text-md lg:text-lg">${songName}</p>
+                        <div class="flex gap-4">
+                            <div class="w-11 h-11 bg-yellow-300 flex justify-center items-center rounded-[50%] cursor-pointer">
+                                <img src="./images/play.png" alt="" class="h-6 ">
+                            </div>
+                            <div class="w-11 h-11 bg-yellow-300 flex justify-center items-center rounded-[50%] cursor-pointer">
+                                <img src="./images/downloads.png" alt="" class="h-6 ">
+                            </div>
+                        </div>
+                    </div>`;
+            });
+        }
+    } catch (error) {
+        console.log("Got error like :", error);
+    }
+};
 
-// console.log('helloguys');
-// const fetchArtistsFromApi = async () => {
-//     try {
-//         fetch(data).then(response => {
-//             return response.json();
-//         })
-//             .then(data => {
-//                 console.log(data);
-//                 if (data.succcess) {
-//                     const artist = data.data
-//                     const parentElement = document.getElementById('artists');
-//                     artist.forEach(eachartish => {
-//                         return parentElement.innerHTML += `<div class="Top-artists">
-//                     <div class="song1 max-w-[100%] w-[8rem] p-4 h-auto bg-white ">
-//                         <img src="./images/image 1.png" alt="track1" class="w-[100px] h-[100px]">
-//                         <img src="./images/yellow-icon.png" alt="pause"
-//                             class="max-w-[100%] w-8  ml-14 -mt-9 align-top cursor-pointer">
-//                         <p class="text-sm  p-1 text-center font-bold">Just hits</p>
-//                     </div>
-//                     </div>`
+const navigateToEachArtist = (songId) => {
+    window.location.href = `./SongsPlayer.html?songId=${songId}`;
+};
 
-//                     });
+let artist = document.querySelectorAll("#artist");
+let artistName;
 
-//                 }
-//             })
-//     } catch (error) {
-
-//     }
-// }
-// fetchArtistsFromApi();
+artist.forEach((eachArtist) => {
+    eachArtist.addEventListener("click", () => {
+        let name = eachArtist.querySelector(".singers");
+        console.log(name.innerHTML);
+        artistName = name.innerHTML;
+        fetchDataFromAPI();
+    });
+});
