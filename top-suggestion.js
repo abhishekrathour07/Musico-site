@@ -26,14 +26,14 @@ const fetchMusicsFromApi = async () => {
         }
     } catch (error) {
         console.error('Error fetching music data:', error);
-        
     }
 }
 
 fetchMusicsFromApi();
 
 const playAudio = (url, element, thumbnailUrl, songName, artistName) => {
-  
+    const audioplayer = document.querySelector('.play-btn');
+
     if (currentAudio) {
         currentAudio.pause();
         if (currentplay) {
@@ -50,25 +50,12 @@ const playAudio = (url, element, thumbnailUrl, songName, artistName) => {
         document.getElementById('player-song-img').src = thumbnailUrl;
         document.getElementById('player-song-name').textContent = songName;
         document.getElementById('player-artist-name').textContent = artistName;
+     
+        audioplayer.src = './images/pausegold.png';
 
-        const audioplayer = document.querySelector('.play-btn');
         const currenttime = document.querySelector(".current-time");
         const remaintime = document.querySelector(".remain-time");
         const ProgressBar = document.querySelector(".progress-bar");
-
-
-        audioplayer.src = './images/pausegold.png';
-         
-        audioplayer.addEventListener('click', () => {
-            if (currentAudio.paused ) {
-                currentAudio.play();
-                currentplay.src = './images/play-button.png';
-            } else {
-                currentAudio.pause();
-                currentplay.src = './images/play-button.png';
-            }
-
-        });
 
         currentAudio.addEventListener('timeupdate', () => {
             const progress = parseInt((currentAudio.currentTime / currentAudio.duration) * 100);
@@ -88,24 +75,34 @@ const playAudio = (url, element, thumbnailUrl, songName, artistName) => {
 
         const volume = document.querySelector('.volume');
         const volumeImg = document.querySelector('.vol-img');
-        let volumevalue;
 
         volume.addEventListener('input', () => {
             currentAudio.volume = volume.value / 100;
-            volumevalue = volume.value;
-            if (volumevalue == 0) {
+            if (volume.value == 0) {
                 volumeImg.src = "./images/mute.png";
             } else {
                 volumeImg.src = "./images/volume.png";
             }
         });
-
     } else {
         currentAudio.pause();
         currentplay.src = "./images/play-button.png";
         currentAudio = null;
         currentplay = null;
     }
+
+    // Add event listener to the audioplayer only once
+    audioplayer.onclick = () => {
+        if (currentAudio.paused) {
+            currentAudio.play();
+            currentplay.src = './images/pausegold.png';
+            audioplayer.src = './images/pausegold.png';
+        } else {
+            currentAudio.pause();
+            currentplay.src = './images/play-button.png';
+            audioplayer.src = './images/play-button.png';
+        }
+    };
 }
 
 const formatTime = (seconds) => {
@@ -113,4 +110,3 @@ const formatTime = (seconds) => {
     const secs = Math.floor(seconds % 60);
     return minutes + ":" + (secs < 10 ? '0' : '') + secs;
 }
-

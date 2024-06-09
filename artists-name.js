@@ -15,20 +15,20 @@ const fetchDataFromAPI = async () => {
                 console.log(songName);
                 const songId = song.id;
                 // Append the song data to the DOM
-                parentElement.innerHTML += ` 
-                    <div  
-                    class="fav1 h-14 w-auto bg-yellow-200 rounded-lg mx-2 flex justify-between items-center mt-2 sm:px-5 px-2">
-                        <img src="${imageUrl}" alt="" class="h-10 rounded-[50%] w-12 ">
-                        <p class="text-sm font-bold sm:text-md lg:text-lg">${songName}</p>
-                        <div class="flex gap-4">
-                            <div class="w-11 h-11 bg-yellow-300 flex justify-center items-center rounded-[50%] cursor-pointer">
-                                <img src="./images/play.png" alt="" class="h-6 ">
-                            </div>
-                            <div class="w-11 h-11 bg-yellow-300 flex justify-center items-center rounded-[50%] cursor-pointer">
-                                <img src="./images/downloads.png" alt="" class="h-6 ">
-                            </div>
-                        </div>
-                    </div>`;
+                // parentElement.innerHTML += ` 
+                //     <div  
+                //     class="fav1 h-14 w-auto bg-yellow-200 rounded-lg mx-2 flex justify-between items-center mt-2 sm:px-5 px-2">
+                //         <img src="${imageUrl}" alt="" class="h-10 rounded-[50%] w-12 ">
+                //         <p class="text-sm font-bold sm:text-md lg:text-lg">${songName}</p>
+                //         <div class="flex gap-4">
+                //             <div class="w-11 h-11 bg-yellow-300 flex justify-center items-center rounded-[50%] cursor-pointer">
+                //                 <img src="./images/play.png" alt="" class="h-6 ">
+                //             </div>
+                //             <div class="w-11 h-11 bg-yellow-300 flex justify-center items-center rounded-[50%] cursor-pointer">
+                //                 <img src="./images/downloads.png" alt="" class="h-6 ">
+                //             </div>
+                //         </div>
+                //     </div>`;
             });
         }
     } catch (error) {

@@ -12,6 +12,8 @@
 <body class="bg-[#DECF83] bg-opacity-[37%] p-0 m-0 ">
     <div class="flex-container flex h-auto w-[100%] gap-1">
         <div class="left-container w-[76%]">
+
+            <!-- NAVBAR -->
             <nav>
                 <ul class="flex gap-2 h-12   items-center  mt-1">
                     <li class="ml-3 sm:ml-7 lg:ml-12"><img src="./images/logo.png" class="w-12" alt="logo"></li>
@@ -26,6 +28,8 @@
                             class="h-9 cursor-pointer menu"></li>
                 </ul>
             </nav>
+
+            <!-- PROMO IMAGE OR CUROUSAL IMAGE -->
 
             <curousal>
                 <div class="image-frame h-[180px] w-auto mt-2  mx-5 flex justify-between"
@@ -64,8 +68,10 @@
                 </div>
             </curousal>
 
+             <!-- TOP SUGGESTED ARTISTS FROM INDIA  -->
+
             <div class="weekly-tracks mx-4 mt-2 ">
-                <h2 class="font-bold text-2xl">Weekly Top Tracks </h2>
+                <h2 class="font-bold text-2xl">Artist Album</h2>
                 <div class="songs-week flex gap-3 mt-2 overflow-auto">
                     <div id="artist">
                         <div class="song2 max-w-[100%] w-[8rem] p-4 h-auto bg-white ">
@@ -117,6 +123,8 @@
                     </div>
                 </div>
 
+                <!-- Recant played songs are stored here -->
+
                 <div class="recent-played mt-1">
                     <h2 class="font-bold text-2xl">Recent Played </h2>
                     <div class="songs flex mt-2 overflow-auto gap-2">
@@ -158,6 +166,9 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Top suggested song all over the world -->
+
                 <div class="mt-1">
                     <h2 class="font-bold text-2xl">Top Suggestion</h2>
                     <div class="songs flex mt-2 overflow-auto gap-2" id="top-suggestion">
@@ -166,6 +177,9 @@
                 </div>
             </div>
         </div>
+
+        <!-- Container where all the favourite songs are stored when someone like THIS SONG IS added TO favourite -->
+
         <div class="right-container w-[24%] z-9999 h-auto bg-[#ebd66a] border-l-2 border-gray-400  ">
             <h2 class="font-medium p-3 text-2xl ">Favourite Songs </h2>
             <div class="fav1 h-14 w-auto bg-yellow-200 rounded-lg mx-2 flex justify-between  items-center mt-3 px-5">
@@ -201,10 +215,12 @@
                 <p class="text-sm">Khamosiyaan</p>
                 <div class="w-11 h-11 bg-yellow-300 flex justify-center items-center rounded-[50%]"><img
                         src="./images/like.png" alt="" class="h-6 "></div>
-
             </div>
         </div>
     </div>
+
+    <!--    Song Player which Play and pause the songs Its include audiobar also -->
+
     <div class="songsplayer fixed flex items-center justify-between gap-4 h-16 bottom-0 w-[100%] bg-[#242424]">
         <img src="./images/Khamoshiyan.jpg" alt="" id="player-song-img"
             class="h-10 ml-3 mr-1 mt-2 flex items-center justify-center rounded-3xl">
@@ -226,9 +242,8 @@
         </div>
     </div>
 
+    <!-- Linking all individual files which work for specific function  -->
 
-    <br>
-    <br>
     <!-- <script src="./script.js"></script>  -->
     <!-- <script src="artists-name.js"></script> -->
     <script src="top-suggestion.js"></script>
