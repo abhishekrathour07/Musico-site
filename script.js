@@ -1,9 +1,9 @@
-
-let menu = document.querySelector(".menu")  //targeting favourite songs btm 
-let container = document.querySelector(".left-container"); //whole container of html page
-let sideBar = document.querySelector('.right-container') // favourite songs pop-ups 
+let menu = document.querySelector(".menu"); // Targeting favourite songs button
+let container = document.querySelector(".left-container"); // Whole container of HTML page
+let sideBar = document.querySelector('.right-container'); // Favourite songs pop-ups
 let sidevalue = 1;
-// Making copy of all te element avilable in sidebar div
+
+// Copy all elements available in sidebar div
 let sideBarHTML = sideBar.outerHTML;
 
 menu.addEventListener('click', () => {
@@ -18,109 +18,123 @@ menu.addEventListener('click', () => {
         sideBar = document.querySelector('.right-container');
         sidevalue = 1;
     }
+});
+
+// performing dark and light mode
+let mode = document.querySelector(".change-mode");
+
+mode.addEventListener('click',(e)=>{
+  if(mode.innerHTML=='hello'){
+    document.body.style.backgroundColor = "black";
+    document.body.style.color = 'White';
+  }
+
 })
 
-// geting song from api
 
+
+// Getting song from API
 let api = 'https://saavn.dev/api/search/songs?query';
-let songInfo;
-let playMySong;
+
 
 let recentsongs = document.querySelectorAll('.song');
 
 recentsongs.forEach((song) => {
-    song.addEventListener('click', (e) => {
+    song.addEventListener('click', () => {
         let songImage = song.querySelector('.songs-img');
         let songName = song.querySelector('.song-name');
         let playBtn = song.querySelector('.play-song');
 
         console.log(songName.innerHTML);
 
-        songInfo = songName.textContent;
+        const songInfo = songName.textContent.trim(); // Trimmed to avoid extra spaces
 
         async function recentPlay() {
-            let response = await fetch(`${api}=${songInfo}`)
-            let data = await response.json();
-            console.log(data);
-            playMySong = data.data.results[0].downloadUrl[2].url;
-            console.log(playMySong);
+            try {
+                let response = await fetch(`${api}=${(songInfo)}`);
+                let data = await response.json();
+                console.log(data);
+                const song = data.data.results[0].downloadUrl[3].url;
+                const singername = data.data.results[0].artists.primary[0].name;
+                console.log(singername);
+
+                // Ensure the result exists
+                if (song) {
+                    // Set the URL to your audio player and play the song
+                    audio.src = song;
+                    audio.play();
+                    audioplayer.src = './images/pausegold.png';
+                    document.getElementById("player-song-img").src = songImage.src;
+                    document.getElementById("player-song-name").innerHTML = songInfo;
+                    document.getElementById("player-artist-name").innerHTML = singername;
+
+                } else {
+                    console.log('Song not found.');
+                }
+            } catch (error) {
+                console.error('Error fetching song:', error);
+            }
         }
         recentPlay();
-       
-
-
     });
 });
-// work on audio player to play and stop the song
 
-let audio = new Audio("./songs/khamosiyan.mp3");
-let audioplayer = document.querySelector('.play-btn')
-let currenttime = document.querySelector(".current-time")
-let remaintime = document.querySelector(".remain-time")
-let ProgressBar = document.querySelector(".progress-bar")
+// Work on audio player to play and stop the song
+let audio = new Audio();
+let audioplayer = document.querySelector('.play-btn');
+let currenttime = document.querySelector(".current-time");
+let remaintime = document.querySelector(".remain-time");
+let ProgressBar = document.querySelector(".progress-bar");
 
-// for play and pause of songs 
+// For play and pause of songs 
 audioplayer.addEventListener('click', () => {
     if (audio.paused || audio.currentTime <= 0) {
         console.log('clicked btn');
         audio.play();
-        audioplayer.src = './images/pausegold.png'
-    }
-    else {
+        audioplayer.src = './images/pausegold.png';
+    } else {
         audio.pause();
-        audioplayer.src = './images/play-button.png'
+        audioplayer.src = './images/play-button.png';
     }
-})
+});
 
-// formating value in form of seconds 
+// Formatting value in form of seconds 
 function formatTime(seconds) {
     let minutes = Math.floor(seconds / 60);
     let secs = Math.floor(seconds % 60);
     return minutes + ":" + (secs < 10 ? '0' : '') + secs;
 }
 
-// updating the seekbar by using timeupdate
+// Updating the seekbar by using timeupdate
 audio.addEventListener('timeupdate', () => {
-
-    progress = parseInt((audio.currentTime / audio.duration) * 100);
-    // console.log(progress);
+    let progress = parseInt((audio.currentTime / audio.duration) * 100);
     ProgressBar.value = progress;
     currenttime.innerHTML = formatTime(audio.currentTime);
     remaintime.innerHTML = formatTime(audio.duration - audio.currentTime);
-
-})
+});
 
 // By clicking progress bar match the song at particular time
 ProgressBar.addEventListener('input', () => {
     audio.currentTime = ProgressBar.value * audio.duration / 100;
 });
 
-
-// when audio is completed the pause button automatically change into play btn
+// When audio is completed the pause button automatically changes into play button
 audio.addEventListener('ended', () => {
     audioplayer.src = './images/play-button.png';
 });
 
-// working on volume button 
+// Working on volume button 
 let volume = document.querySelector('.volume');
-let volumeImg = document.querySelector('.vol-img')
+let volumeImg = document.querySelector('.vol-img');
 let volumevalue;
 
 volume.addEventListener('input', () => {
-    audio.volume = volume.value/100;
+    audio.volume = volume.value / 100;
     volumevalue = volume.value;
     console.log(volume.value);
     if (volumevalue == 0) {
-        volumeImg.src = "./images/mute.png"
-    }
-    else {
-        volumeImg.src = "./images/volume.png"
+        volumeImg.src = "./images/mute.png";
+    } else {
+        volumeImg.src = "./images/volume.png";
     }
 });
-
-
-
-
-
-
-

@@ -1,5 +1,6 @@
 const API_ARTIST = `https://saavn.dev/api/search?query=`;
 
+let songId;
 const fetchDataFromAPI = async () => {
     try {
         const response = await fetch(`${API_ARTIST}${artistName}`);
@@ -8,12 +9,13 @@ const fetchDataFromAPI = async () => {
         if (data.success) {
             const songs = data.data.songs.results;
             let parentElement = document.getElementById("artist-song");
+            console.log(parentElement);
             songs.forEach((song) => {
                 const imageUrl = song.image.find((image) => image.quality === '500x500').url;
                 console.log(imageUrl);
                 const songName = song.title;
                 console.log(songName);
-                const songId = song.id;
+               songId  = song.id;
                 // Append the song data to the DOM
                 // parentElement.innerHTML += ` 
                 //     <div  
@@ -49,5 +51,6 @@ artist.forEach((eachArtist) => {
         console.log(name.innerHTML);
         artistName = name.innerHTML;
         fetchDataFromAPI();
+        // navigateToEachArtist(songId)
     });
 });
