@@ -54,3 +54,14 @@ artist.forEach((eachArtist) => {
         // navigateToEachArtist(songId)
     });
 });
+
+const api11 = "https://saavn.dev/api/artists/1274170/albums";
+async function fetcha() {
+    console.log('coming fetcha');
+    let res = await fetch(api11);
+    let d =  await res.json();
+    console.log(d);
+
+}
+
+fetcha();

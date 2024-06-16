@@ -50,7 +50,7 @@ const playAudio = (url, element, thumbnailUrl, songName, artistName) => {
         document.getElementById('player-song-img').src = thumbnailUrl;
         document.getElementById('player-song-name').textContent = songName;
         document.getElementById('player-artist-name').textContent = artistName;
-     
+
         audioplayer.src = './images/pausegold.png';
 
         const currenttime = document.querySelector(".current-time");
@@ -110,3 +110,4 @@ const formatTime = (seconds) => {
     const secs = Math.floor(seconds % 60);
     return minutes + ":" + (secs < 10 ? '0' : '') + secs;
 }
+
