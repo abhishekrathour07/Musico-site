@@ -60,8 +60,8 @@ const playAudio = (url, element, thumbnailUrl, songName, artistName) => {
         currentAudio.addEventListener('timeupdate', () => {
             const progress = parseInt((currentAudio.currentTime / currentAudio.duration) * 100);
             ProgressBar.value = progress;
-            currenttime.innerHTML = formatTime(currentAudio.currentTime);
-            remaintime.innerHTML = formatTime(currentAudio.duration - currentAudio.currentTime);
+            currenttime.innerHTML = formatTimeTop(currentAudio.currentTime);
+            remaintime.innerHTML = formatTimeTop(currentAudio.duration - currentAudio.currentTime);
         });
 
         ProgressBar.addEventListener('input', () => {
@@ -105,7 +105,7 @@ const playAudio = (url, element, thumbnailUrl, songName, artistName) => {
     };
 }
 
-const formatTime = (seconds) => {
+const formatTimeTop = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return minutes + ":" + (secs < 10 ? '0' : '') + secs;
