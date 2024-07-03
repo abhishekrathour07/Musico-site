@@ -13,12 +13,12 @@
 
     <div class="container  bg-[#ebd66a] text-black h-[90vh] sm:w-[100vw] lg:w-[90vw] rounded-lg">
         <div class="flex ml-4 sm:ml-8">
-            <img src="./images/honeysingh.cms" alt="img" class="max-w-36 max-h-36 rounded-[50%]  mt-12">
+            <img src="./images/honeysingh.cms" alt="img" class="max-w-36 max-h-36 rounded-[50%]  mt-12 singerImage">
             <div class="song-singer mt-8 ml-4">
                 <p class="flex items-center text-[0.8rem] sm:text-sm font-bold "><img src="./images/verify.png"
-                        alt="img-varify" class="h-8">Varified Artist</p>
+                        alt="img-varify" class="h-8 ">Varified Artist</p>
                 <p class="SingerName text-[2rem] sm:text-[4rem]  font-extrabold ">Honey Singh</p>
-                <p class="SongName text-[0.8rem] sm:text-sm font-bold">32,14,782 monthly listeners</p>
+                <p class=" text-[0.8rem] sm:text-sm font-bold">32,14,782 monthly listeners</p>
             </div>
         </div>
         <div class="flex ml-4 gap-7 lg:ml-12 h-16  items-center cursor-pointer">
@@ -33,21 +33,32 @@
             </div>
         </div>
         <div id="artist-song">
-            <div
-                class="fav1 h-14 w-auto bg-yellow-200 rounded-lg mx-2 flex justify-between items-center mt-2 sm:px-5 px-2">
-                <img src="./images/Khamoshiyan.jpg" alt="" class="h-10 rounded-[50%] w-12 ">
-                <p class="text-sm font-bold sm:text-md lg:text-lg">Khamosiyaan</p>
-                <div class="flex gap-4">
-                    <div class="w-11 h-11 bg-yellow-300 flex justify-center items-center rounded-[50%] cursor-pointer">
-                        <img src="./images/play.png" alt="" class="h-6 "></div>
-                    <div class="w-11 h-11 bg-yellow-300 flex justify-center items-center rounded-[50%] cursor-pointer">
-                        <img src="./images/downloads.png" alt="" class="h-6 "></div>
-                </div>
-            </div>
+
+        </div>
+    </div>
+    <div class="songsplayer fixed flex items-center justify-between gap-4 h-16 bottom-0 w-[100%] bg-[#242424]">
+        <img src="./images/Khamoshiyan.jpg" alt="" id="player-song-img"
+            class="h-11 w-12 ml-3 mr-1 mt-2 flex items-center justify-center rounded-3xl">
+        <div class="w-[15%] ">
+            <p class="text-yellow-700 text-sm" id="player-song-name">Khamosiyaan</p>
+            <p class="text-white text-[0.6rem]" id="player-artist-name">Arijit Singh</p>
+        </div>
+        <div class="items-center gap-2 w-1/2 hidden sm:flex">
+            <p class="text-[0.6rem] text-yellow-600 mr-3 current-time">0:00</p>
+            <input type="range" min="0" max="100" value="0" class="h-1 w-3/4 cursor-pointer progress-bar">
+            <p class="text-[0.6rem] text-yellow-600 ml-3 remain-time">3:58</p>
+        </div>
+        <div class="h-auto max-w-9 w-[100%] cursor-pointer mr-2 sm:mr10">
+            <img src="./images/play-button.png" alt="play" id="music-player" class="play-btn">
+        </div>
+        <div class="volume-container w-1/7 justify-center items-center p-2 hidden sm:flex">
+            <input type="range" value="80" class="w-1/2 h-1 mr-4 volume cursor-pointer">
+            <img src="./images/volume.png" alt="volume" class="vol-img h-6">
         </div>
     </div>
 
-<script src="songsPlayer.js"></script>
+
+    <script src="songsPlayer.js"></script>
 </body>
 
 </html>

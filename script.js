@@ -20,22 +20,8 @@ menu.addEventListener('click', () => {
     }
 });
 
-// performing dark and light mode
-let mode = document.querySelector(".change-mode");
-
-mode.addEventListener('click',(e)=>{
-  if(mode.innerHTML=='hello'){
-    document.body.style.backgroundColor = "black";
-    document.body.style.color = 'White';
-  }
-
-})
-
-
-
 // Getting song from API
 let api = 'https://saavn.dev/api/search/songs?query';
-
 
 let recentsongs = document.querySelectorAll('.song');
 
