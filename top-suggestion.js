@@ -11,7 +11,7 @@ const fetchMusicsFromApi = async () => {
 
         if (data.success) {
             const songs = data.data;
-            const parentElement = document.getElementById('top-suggestion');
+            const parentElement = document.getElementById('top');
             songs.forEach((eachSong) => {
                 const thumbnailUrl = eachSong.image.find((image) => image.quality === '500x500').url;
                 const streamUrl = eachSong.downloadUrl.find((downloadUrl) => downloadUrl.quality === '320kbps').url;
